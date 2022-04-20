@@ -42,3 +42,77 @@ export function longestCommonPrefixVertical(strs: string[]): string {
 }
 
 // Divide and conquer
+// This solution exceeds node stack call,
+// one of the solutions is to set set max variable to setTimeout with max to let node clear the queue
+function commonPrefix(stringLeft: string, stringRight: string): string {
+  const min = Math.min(stringLeft.length, stringRight.length);
+
+  for (let i = 0; i < min; i++) {
+    if (stringLeft.charAt(i) !== stringRight.charAt(i)) {
+      return stringLeft.substring(0, i);
+    }
+  }
+
+  return stringLeft.substring(0, min);
+}
+function findLongestCommonPrefixDaC(
+  strs: string[],
+  left: number,
+  right: number
+): any {
+  if (left === right) {
+    return strs[left];
+  }
+  const middle = (left + right) / 2;
+  const lcpLeft: string = findLongestCommonPrefixDaC(strs, left, middle);
+  const lcpRight: string = findLongestCommonPrefixDaC(strs, middle + 1, right);
+
+  return commonPrefix(lcpLeft, lcpRight);
+}
+
+export function longestCommonPrefixDaC(strs: string[]): string {
+  const inputArrLength = strs.length;
+  if (inputArrLength === 0 && inputArrLength > 200) {
+    return "";
+  }
+
+  return findLongestCommonPrefixDaC(strs, 0, strs.length - 1);
+}
+
+// Binary tree solution
+// not quite right has a problem with ["cir", "car"]
+function isCommonPrefix(strs: string[], length: number): boolean {
+  const str = strs[0].substring(0, length);
+  for (let i = 1; i < strs.length; i++) {
+    if (!strs[i].startsWith(str)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+export function longestCommonPrefixBinaryTree(strs: string[]): string {
+  const inputArrLength = strs.length;
+  if (inputArrLength === 0 && inputArrLength > 200) {
+    return "";
+  }
+
+  let minLength = 9999;
+  for (let i = 0; i < inputArrLength; i++) {
+    minLength = Math.min(minLength, strs[i].length);
+  }
+
+  let low = 0;
+  let hight = minLength;
+
+  while (low <= hight) {
+    const middle = (low + hight) / 2;
+    if (isCommonPrefix(strs, middle)) {
+      low = middle + 1;
+    } else {
+      hight = middle - 1;
+    }
+  }
+
+  return strs[0].substring(0, (low + hight) / 2);
+}

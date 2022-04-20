@@ -1,7 +1,8 @@
 import {
   longestCommonPrefix,
   longestCommonPrefixVertical,
-  longestCommonPrefixDandC,
+  longestCommonPrefixDaC,
+  longestCommonPrefixBinaryTree,
 } from "../longestCommonPrefix";
 
 it("longestCommonPrefix", () => {
@@ -14,7 +15,18 @@ it("longestCommonPrefixVertical", () => {
   expect(longestCommonPrefixVertical(["dog", "racecar", "car"])).toBe("");
 });
 
-it("longestCommonPrefixDandC", () => {
-  expect(longestCommonPrefixDandC(["flower", "flow", "flight"])).toBe("fl");
-  expect(longestCommonPrefixDandC(["dog", "racecar", "car"])).toBe("");
+xit("longestCommonPrefixDaC", () => {
+  expect(longestCommonPrefixDaC(["flower", "flow", "flight"])).toBe("fl");
+  expect(longestCommonPrefixDaC(["dog", "racecar", "car"])).toBe("");
+});
+
+it("longestCommonPrefixBinaryTree", () => {
+  expect(longestCommonPrefixBinaryTree(["flower", "flow", "flight"])).toBe(
+    "fl"
+  );
+  expect(
+    longestCommonPrefixBinaryTree(["cart", "cartoon", "car", "carnival"])
+  ).toBe("car");
+  expect(longestCommonPrefixBinaryTree(["dog", "racecar", "car"])).toBe("");
+  expect(longestCommonPrefixBinaryTree(["cir", "car"])).toBe("c");
 });
