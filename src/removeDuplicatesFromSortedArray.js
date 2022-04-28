@@ -1,13 +1,13 @@
-export function removeDuplicatesA(nums: number[]): number {
-  let numsCopy: (number | any)[] = [...nums];
+function removeDuplicatesA(nums) {
+  let numsCopy = [...nums];
   if (numsCopy.length === 0) {
     return 0;
   }
 
-  let dictionary: Record<number, any> = {
+  let dictionary = {
     [nums[0]]: nums[0],
   };
-  let freeIndex: number[] = [];
+  let freeIndex = [];
   let counter = 1;
 
   for (let i = 1; i < numsCopy.length; i++) {
@@ -29,7 +29,7 @@ export function removeDuplicatesA(nums: number[]): number {
   return counter;
 }
 
-export function removeDuplicatesB(nums: any[]): any {
+function removeDuplicatesB(nums) {
   if (nums.length === 0) {
     return 0;
   }
@@ -45,3 +45,5 @@ export function removeDuplicatesB(nums: any[]): any {
 
   return i + 1;
 }
+
+module.exports = { removeDuplicatesA, removeDuplicatesB };

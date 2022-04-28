@@ -1,4 +1,4 @@
-export function twoSum(nums: number[], target: number): number[] {
+function twoSum(nums, target) {
   // Time Complexity: O(n^2)
   // Space Complexity: O(1)
   const numbersLength = nums.length;
@@ -20,10 +20,10 @@ export function twoSum(nums: number[], target: number): number[] {
   return [];
 }
 
-export function twoSumHashMap(nums: number[], target: number): number[] {
+function twoSumHashMap(nums, target) {
   // Time Complexity: O(n)
   // Space Complexity: O(n)
-  const seen: Record<number, number> = {};
+  const seen = {};
   const numbersLength = nums.length;
   if (numbersLength < 2) {
     return [];
@@ -38,3 +38,8 @@ export function twoSumHashMap(nums: number[], target: number): number[] {
   }
   return [];
 }
+
+module.exports = {
+  twoSum,
+  twoSumHashMap,
+};

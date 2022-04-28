@@ -1,4 +1,4 @@
-export function isPalindrome(x: number): boolean {
+function isPalindrome(x) {
   let inputNumber = x;
   if (inputNumber < 0 || (inputNumber % 10 === 0 && inputNumber != 0)) {
     return false;
@@ -17,10 +17,15 @@ export function isPalindrome(x: number): boolean {
   );
 }
 
-export function isPalindromeStr(x: number): boolean {
+function isPalindromeStr(x) {
   if (x < 0 || (x % 10 === 0 && x != 0)) {
     return false;
   }
   const xString = x.toString().split("").reverse().join("");
   return x === parseInt(xString, 10);
 }
+
+module.exports = {
+  isPalindrome,
+  isPalindromeStr,
+};

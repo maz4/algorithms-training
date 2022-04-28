@@ -1,4 +1,4 @@
-import { twoSum, twoSumHashMap } from "../TwoSum";
+const { twoSum, twoSumHashMap } = require("../TwoSum");
 
 it("twoSum", () => {
   expect(twoSum([2, 7, 11, 15], 9)).toStrictEqual([0, 1]);

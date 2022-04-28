@@ -1,4 +1,4 @@
-import { isPalindrome, isPalindromeStr } from "../palindromeNumber";
+const { isPalindrome, isPalindromeStr } = require("../palindromeNumber");
 
 it("isPalindrome", () => {
   expect(isPalindrome(121)).toBe(true);

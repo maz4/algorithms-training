@@ -1,32 +1,26 @@
-export function mergeTwoListsEasySolution(
-  list1: number[],
-  list2: number[]
-): number[] {
+function mergeTwoListsEasySolution(list1, list2) {
   if (list1.length === 0 && list2.length === 0) {
     return [];
   }
 
   const mergedLists = list1.concat(list2);
-  const sorted = mergedLists.sort((a, b): any => {
+  const sorted = mergedLists.sort((a, b) => {
     return a - b;
   });
   return sorted;
 }
 
 class ListNode {
-  val: number;
-  next: ListNode | null;
-  constructor(val?: number, next?: ListNode | null) {
+  val;
+  next;
+  constructor(val, next) {
     this.val = val === undefined ? 0 : val;
     this.next = next === undefined ? null : next;
   }
 }
 
 // to analyze
-export function mergeTwoLists(
-  list1: ListNode | null,
-  list2: ListNode | null
-): ListNode | null {
+function mergeTwoLists(list1, list2) {
   let dummy = new ListNode();
   let head = dummy;
 
@@ -47,3 +41,8 @@ export function mergeTwoLists(
   }
   return dummy.next;
 }
+
+module.exports = {
+  mergeTwoLists,
+  mergeTwoListsEasySolution,
+};

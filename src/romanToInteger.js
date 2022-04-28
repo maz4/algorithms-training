@@ -1,5 +1,5 @@
-export function romanToInt(s: string): number {
-  const romanNumerals: Record<string, number> = {
+function romanToInt(s) {
+  const romanNumerals = {
     I: 1,
     V: 5,
     X: 10,
@@ -9,7 +9,7 @@ export function romanToInt(s: string): number {
     M: 1000,
   };
 
-  const exceptions: Record<string, number> = {
+  const exceptions = {
     IV: 4,
     IX: 9,
     XL: 40,
@@ -22,7 +22,7 @@ export function romanToInt(s: string): number {
     return 0;
   }
 
-  let result: number = 0;
+  let result = 0;
 
   for (let i = 0; i < s.length; i++) {
     if (i + 1 < s.length && exceptions[s[i] + s[i + 1]]) {
@@ -36,8 +36,8 @@ export function romanToInt(s: string): number {
   return result;
 }
 
-export function romanToIntHashMap(s: string): number {
-  const romanNumerals: Record<string, number> = {
+function romanToIntHashMap(s) {
+  const romanNumerals = {
     I: 1,
     V: 5,
     X: 10,
@@ -46,7 +46,7 @@ export function romanToIntHashMap(s: string): number {
     D: 500,
     M: 1000,
   };
-  let result: number = 0;
+  let result = 0;
 
   for (let i = 0; i < s.length; i++) {
     if (i + 1 < s.length && romanNumerals[s[i]] < romanNumerals[s[i + 1]]) {
@@ -57,3 +57,5 @@ export function romanToIntHashMap(s: string): number {
   }
   return result;
 }
+
+module.exports = { romanToInt, romanToIntHashMap };

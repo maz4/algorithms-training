@@ -1,5 +1,5 @@
 //Horizontal scanning
-export function longestCommonPrefix(strs: string[]): string {
+function longestCommonPrefix(strs) {
   // Time complexity : O(S), where S is the sum of all characters in all strings.
   // Space complexity : O(1)O(1). We only used constant extra space.
   const inputArrLength = strs.length;
@@ -22,7 +22,7 @@ export function longestCommonPrefix(strs: string[]): string {
 }
 
 // Vertical scanning
-export function longestCommonPrefixVertical(strs: string[]): string {
+function longestCommonPrefixVertical(strs) {
   const inputArrLength = strs.length;
   if (inputArrLength === 0 && inputArrLength > 200) {
     return "";
@@ -44,7 +44,7 @@ export function longestCommonPrefixVertical(strs: string[]): string {
 // Divide and conquer
 // This solution exceeds node stack call,
 // one of the solutions is to set set max variable to setTimeout with max to let node clear the queue
-function commonPrefix(stringLeft: string, stringRight: string): string {
+function commonPrefix(stringLeft, stringRight) {
   const min = Math.min(stringLeft.length, stringRight.length);
 
   for (let i = 0; i < min; i++) {
@@ -55,22 +55,18 @@ function commonPrefix(stringLeft: string, stringRight: string): string {
 
   return stringLeft.substring(0, min);
 }
-function findLongestCommonPrefixDaC(
-  strs: string[],
-  left: number,
-  right: number
-): any {
+function findLongestCommonPrefixDaC(strs, left, right) {
   if (left === right) {
     return strs[left];
   }
   const middle = (left + right) / 2;
-  const lcpLeft: string = findLongestCommonPrefixDaC(strs, left, middle);
-  const lcpRight: string = findLongestCommonPrefixDaC(strs, middle + 1, right);
+  const lcpLeft = findLongestCommonPrefixDaC(strs, left, middle);
+  const lcpRight = findLongestCommonPrefixDaC(strs, middle + 1, right);
 
   return commonPrefix(lcpLeft, lcpRight);
 }
 
-export function longestCommonPrefixDaC(strs: string[]): string {
+function longestCommonPrefixDaC(strs) {
   const inputArrLength = strs.length;
   if (inputArrLength === 0 && inputArrLength > 200) {
     return "";
@@ -81,7 +77,7 @@ export function longestCommonPrefixDaC(strs: string[]): string {
 
 // Binary tree solution
 // not quite right has a problem with ["cir", "car"]
-function isCommonPrefix(strs: string[], length: number): boolean {
+function isCommonPrefix(strs, length) {
   const str = strs[0].substring(0, length);
   for (let i = 1; i < strs.length; i++) {
     if (!strs[i].startsWith(str)) {
@@ -91,7 +87,7 @@ function isCommonPrefix(strs: string[], length: number): boolean {
   return true;
 }
 
-export function longestCommonPrefixBinaryTree(strs: string[]): string {
+function longestCommonPrefixBinaryTree(strs) {
   const inputArrLength = strs.length;
   if (inputArrLength === 0 && inputArrLength > 200) {
     return "";
@@ -116,3 +112,11 @@ export function longestCommonPrefixBinaryTree(strs: string[]): string {
 
   return strs[0].substring(0, (low + hight) / 2);
 }
+
+module.exports = {
+  longestCommonPrefix,
+  longestCommonPrefixBinaryTree,
+  longestCommonPrefixDaC,
+  longestCommonPrefixVertical,
+  findLongestCommonPrefixDaC,
+};

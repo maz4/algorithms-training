@@ -1,9 +1,9 @@
-export function isValid(s: string): boolean {
+function isValid(s) {
   if (s.length % 2 !== 0) {
     return false;
   }
 
-  const stack: string[] = [];
+  const stack = [];
 
   for (let i = 0; i < s.length; i++) {
     if (s[i] === "[" || s[i] === "{" || s[i] === "(") {
@@ -24,3 +24,5 @@ export function isValid(s: string): boolean {
 
   return stack.length === 0;
 }
+
+module.exports = { isValid };

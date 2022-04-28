@@ -1,4 +1,4 @@
-import { isValid } from "../validParentheses";
+const { isValid } = require("../validParentheses");
 
 it("isValid", () => {
   expect(isValid("()")).toBe(true);

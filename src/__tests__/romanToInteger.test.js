@@ -1,4 +1,4 @@
-import { romanToIntHashMap, romanToInt } from "../romanToInteger";
+const { romanToIntHashMap, romanToInt } = require("../romanToInteger");
 
 it("romanToInt", () => {
   expect(romanToInt("III")).toBe(3);

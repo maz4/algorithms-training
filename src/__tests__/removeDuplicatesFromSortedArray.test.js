@@ -1,7 +1,7 @@
-import {
+const {
   removeDuplicatesA,
   removeDuplicatesB,
-} from "../removeDuplicatesFromSortedArray";
+} = require("../removeDuplicatesFromSortedArray");
 
 it("removeDuplicates", () => {
   expect(removeDuplicatesA([1, 1, 2])).toEqual(2);
