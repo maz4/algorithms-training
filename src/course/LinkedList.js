@@ -101,7 +101,35 @@ class LinkedList {
     previousNode.next = nodeToRemove.next;
     this.length--;
 
+    if (index == this.length) {
+      // update tail if index is the sme as
+      // array last element
+      this.tail = previousNode;
+    }
+
     return this.printList();
+  }
+
+  reverse() {
+    if (!this.head.next) {
+      return this.head;
+    }
+
+    let first = this.head;
+    let second = first.next;
+    this.tail = this.head;
+
+    while (second) {
+      const temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+
+    this.head.next = null;
+    this.head = first;
+
+    return this;
   }
 }
 
@@ -109,9 +137,10 @@ const myLinkedList = new LinkedList(10);
 myLinkedList.append(16);
 myLinkedList.append(22);
 myLinkedList.prepend(1);
-console.log(myLinkedList.printList());
+// console.log(myLinkedList.printList());
 myLinkedList.insert(1, 2);
 myLinkedList.insert(0, 0);
-console.log(myLinkedList.printList());
+// console.log(myLinkedList.printList());
 myLinkedList.remove(5);
 console.log(myLinkedList.printList());
+console.log(myLinkedList.reverse());
