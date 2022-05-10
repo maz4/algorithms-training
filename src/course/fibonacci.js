@@ -24,5 +24,26 @@ function fibonacciIterative(n) {
   return current;
 }
 
+function fibonacciMemoized() {
+  let cache = {};
+
+  return function fib(n) {
+    if (n in cache) {
+      return cache[n];
+    } else {
+      if (n < 2) {
+        cache[n] = n;
+        return n;
+      }
+
+      cache[n] = fib(n - 1) + fib(n - 2);
+
+      return cache[n];
+    }
+  };
+}
+
 console.log(fibonacciIterative(3));
 console.log(fibonacciRecursive(8));
+const fibMemo = fibonacciMemoized();
+console.log(fibMemo(10));
