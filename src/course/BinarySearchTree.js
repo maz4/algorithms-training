@@ -247,6 +247,59 @@ class BinarySearchTree {
 
     return this.breadthFirstSearchR(queue, list);
   }
+
+  DFSInOrder() {
+    return traverseInOrder(this.root, []);
+  }
+
+  DFSPreOrder() {
+    return traversePreOrder(this.root, []);
+  }
+
+  DFSPostOrder() {
+    return traversePostOrder(this.root, []);
+  }
+}
+
+function traverseInOrder(node, list) {
+  if (node.left) {
+    traverseInOrder(node.left, list);
+  }
+
+  list.push(node.value);
+
+  if (node.right) {
+    traverseInOrder(node.right, list);
+  }
+
+  return list;
+}
+
+function traversePreOrder(node, list) {
+  list.push(node.value);
+
+  if (node.left) {
+    traversePreOrder(node.left, list);
+  }
+
+  if (node.right) {
+    traversePreOrder(node.right, list);
+  }
+
+  return list;
+}
+
+function traversePostOrder(node, list) {
+  if (node.left) {
+    traversePostOrder(node.left, list);
+  }
+
+  if (node.right) {
+    traversePostOrder(node.right, list);
+  }
+  list.push(node.value);
+
+  return list;
 }
 
 const myTree = new BinarySearchTree();
@@ -259,9 +312,18 @@ myTree.insert(15);
 myTree.insert(1);
 myTree.insert(6);
 
+//       9
+//   4      20
+// 1   6  15  170
+
 console.log(JSON.stringify(myTree.lookup(21)));
+
 console.log(JSON.stringify(myTree.breadthFirstSearch()));
 console.log(JSON.stringify(myTree.breadthFirstSearchR([myTree.root], [])));
+
+console.log(JSON.stringify(myTree.DFSInOrder()));
+console.log(JSON.stringify(myTree.DFSPreOrder()));
+console.log(JSON.stringify(myTree.DFSPostOrder()));
 
 function traverse(node) {
   const tree = { value: node.value };
