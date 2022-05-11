@@ -1,4 +1,4 @@
-const { removeElement } = require("../removeElement");
+const { removeElement, removeElement2 } = require("../removeElement");
 
 it("removeElement", () => {
   expect(removeElement([3, 2, 2, 3], 3)).toEqual([2, 2, null, null]);
@@ -12,4 +12,9 @@ it("removeElement", () => {
     null,
     null,
   ]);
+});
+
+it("removeElement", () => {
+  expect(removeElement2([3, 2, 2, 3], 3)).toEqual(2);
+  expect(removeElement2([0, 1, 2, 2, 3, 0, 4, 2], 2)).toEqual(5);
 });

@@ -48,6 +48,34 @@ var removeElement = function (nums, val) {
 console.log(removeElement([3, 2, 2, 3], 3));
 console.log(removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2));
 
+var removeElement2 = function (nums, val) {
+  let counter = nums.length;
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = 0; j < nums.length; j++) {
+      if (nums[j] === val) {
+        nums[j] = null;
+        counter--;
+      }
+
+      if (
+        nums[j] === null &&
+        nums[j + 1] !== null &&
+        nums[j + 1] !== undefined &&
+        nums[j + 1] !== val
+      ) {
+        nums[j] = nums[j + 1];
+        nums[j + 1] = null;
+      }
+    }
+  }
+
+  return counter;
+};
+
+console.log(removeElement2([3, 2, 2, 3], 3));
+console.log(removeElement2([0, 1, 2, 2, 3, 0, 4, 2], 2));
+
 module.exports = {
   removeElement,
+  removeElement2,
 };
